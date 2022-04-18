@@ -1,3 +1,13 @@
 #!/usr/bin/env bash
 
+set -e;
+
 cc main.c -o remove_carriage_return;
+
+if [[ $1 == $2 ]]; then
+  echo "The writer $1 cannot be the same as the reader $2"
+  exit 1
+fi
+
+./remove_carriage_return $1 $2
+mv $2 $1;
